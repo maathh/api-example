@@ -27,25 +27,35 @@ Recursos:
 ● Obter total de usuários cadastrados por estado
 
 
+
 Passos para executar o programa:
+
 
 git clone 
 
+
 cd api-example
+
 
 ./vendor/bin/sail up
 
+
 configure corretamente o arquivo .env com a conexão com o banco de dados
+
 
 php artisan key:generate
 
+
 php artisan migrate
+
 
 php artisan db:seed
 
 
 
+
 exemplos de rotas:
+
 http://localhost/api/users
 
 http://localhost/api/users/1/
