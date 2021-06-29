@@ -33,6 +33,7 @@ Passos para executar o programa:
 
 git clone 
 
+composer install
 
 cd api-example
 
