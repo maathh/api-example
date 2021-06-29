@@ -2,6 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\StateController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\UsersAddressController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,18 +23,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('cities', 'StateController@index');
-Route::get('cities/{id}', 'StateController@show');
+Route::get('states', [StateController::class, 'index'])->name('state.all');
+Route::get('states/{id}', [StateController::class, 'show'])->name('state.show');
 
-Route::get('cities', 'CityController@index');
-Route::get('cities/{id}', 'CityController@show');
+Route::get('cities', [CityController::class, 'index'])->name('city.all');
+Route::get('cities/{id}', [CityController::class, 'show'])->name('city.all');
 
-Route::get('users', 'UsersController@index');
-Route::get('users/{id}', 'UsersController@show');
-Route::post('users', 'UsersController@store');
-Route::put('users/{id}', 'UsersController@update');
-Route::delete('users/{id}', 'UsersController@delete');
+Route::get('users/addresses', [UsersAddressController::class, 'index']);
+Route::get('users/{user_id}/addresses', [UsersAddressController::class, 'index']);
+Route::get('users/{user_id}/addresses/{id}', [UsersAddressController::class, 'show']);
 
-Route::get('users/addresses', 'UsersAddressController@index');
-Route::get('users/addresses/{id}', 'UsersAddressController@show');
+Route::get('users', [UserController::class, 'index']);
+Route::get('users/{id}', [UserController::class, 'show']);
+Route::post('users', [UserController::class, 'store']);
+Route::put('users/{id}', [UserController::class, 'update']);
+Route::delete('users/{id}', [UserController::class, 'delete']);
+
+
 

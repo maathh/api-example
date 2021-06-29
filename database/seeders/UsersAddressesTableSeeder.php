@@ -21,33 +21,12 @@ class UsersAddressesTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create();
 
-        $idAdmUser = 1;
-        UsersAddress::create([
-            'user_id' => $idAdmUser,
-            'city_id' => rand(1, 100),
-            'street' => $faker->streetAddress,
-            'district' => $faker->streetName,
-            'complement' => $faker->streetName,
-            'post_code' => (string) rand(10000000, 99999999),
-            'number' => $faker->buildingNumber,
-        ]);
-        UsersAddress::create([
-            'user_id' => $idAdmUser,
-            'city_id' => rand(1, 100),
-            'street' => $faker->streetAddress,
-            'district' => $faker->streetName,
-            'complement' => $faker->streetName,
-            'post_code' => (string) rand(10000000, 99999999),
-            'number' => $faker->buildingNumber,
-        ]);
-
-
         //Only to generate random data
         $minimumUsersId = 1;
-        $maximumUsersId = 20;
+        $maximumUsersId = 21;
 
         $minimumCitiesId = 1;
-        $maximumCitiesId = 100;
+        $maximumCitiesId = 5570;
         
         for ($i = 0; $i < 50; $i++) {
             UsersAddress::create([
