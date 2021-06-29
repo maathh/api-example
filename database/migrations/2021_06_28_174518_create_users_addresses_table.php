@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdressesTable extends Migration
+class CreateUsersAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,22 @@ class CreateAdressesTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_adresses', function (Blueprint $table) {
+        Schema::create('users_addresses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('users_id');
+            $table->bigInteger('user_id')->unsigned();
             $table->integer('city_id')->unsigned();
-            $table->string('road');
+            $table->string('street');
             $table->string('district');
             $table->string('complement');
-            $table->integer('zip_code');
-            $table->integer('number');
+            $table->string('post_code',8);
+            $table->string('number');
         });
 
-        Schema::table('adresses', function (Blueprint $table) {
-            $table->foreign('users_id')->references('id')->on('users');
+        Schema::table('users_addresses', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
         });
 
-        Schema::table('adresses', function (Blueprint $table) {
+        Schema::table('users_addresses', function (Blueprint $table) {
             $table->foreign('city_id')->references('id')->on('cities');
         });
     }
@@ -40,6 +40,6 @@ class CreateAdressesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('adresses');
+        Schema::dropIfExists('users_addresses');
     }
 }
